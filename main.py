@@ -1,3 +1,24 @@
+# Part 3: Attendance Checker
+class AttendanceChecker:
+    def __init__(self, manager):
+        self.manager = manager
+
+    def check_in(self, date, user_id):
+        """Check attendance for a given user and date, with editing if attendance already exists."""
+        
+        if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
+            current_status = self.manager.all_attendance[user_id][date]
+            print(f"User {user_id} has already been marked as {'Present' if current_status else 'Absent'} on {date}.")
+            
+            new_status = input("Enter new attendance status (True for present, False for absent): ").strip().lower() == 'true'
+            self.manager.edit(date, user_id, new_status)
+        
+        else:
+            print(f"No attendance record found for user {user_id} on {date}.")
+            new_status = input("Enter attendance status (True for present, False for absent): ").strip().lower() == 'true'
+            self.manager.add(date, user_id, new_status)
+
+
 class AttendanceManager:
     def __init__(self):
         self.all_attendance = {}
@@ -40,28 +61,20 @@ class AttendanceManager:
                     writer.writerow([user_id, date, status])
         print(f"Attendance data exported to file {filename}.")
 
-# Example usage with default values
 import datetime
 
-# Today's date
 today_date = datetime.date.today().isoformat()
 
 attendance_manager = AttendanceManager()
 
-# Add attendance entry
 attendance_manager.add(date=today_date, user_id=1, was=False)
 
-# Edit attendance entry
 attendance_manager.edit(date=today_date, user_id=1, was=True)
 
-# Add attendance entry
 attendance_manager.add(date=today_date, user_id=2, was=False)
 
-# Delete attendance entry
 attendance_manager.delete(date=today_date, user_id=2)
 
-# Generate attendance report
 print(attendance_manager.generate_report())
 
-# Export attendance data to CSV
 attendance_manager.export_to_csv("attendance_report.csv")

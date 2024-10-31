@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """manage_student_file.ipynb
 
@@ -38,20 +39,19 @@ def manage_student_file():
     print(f"The student was successfully added to the file {path}.")
 
     # Part 3: Attendance Checker
+
 class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
 
     def check_in(self, date, user_id):
         """Check attendance for a given user and date, with editing if attendance already exists."""
-
         if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
             current_status = self.manager.all_attendance[user_id][date]
             print(f"User {user_id} has already been marked as {'Present' if current_status else 'Absent'} on {date}.")
 
             new_status = input("Enter new attendance status (True for present, False for absent): ").strip().lower() == 'true'
             self.manager.edit(date, user_id, new_status)
-
         else:
             print(f"No attendance record found for user {user_id} on {date}.")
             new_status = input("Enter attendance status (True for present, False for absent): ").strip().lower() == 'true'
@@ -116,4 +116,6 @@ attendance_manager.delete(date=today_date, user_id=2)
 
 print(attendance_manager.generate_report())
 
+
 attendance_manager.export_to_csv("attendance_report.csv")
+

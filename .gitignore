@@ -1,0 +1,22 @@
+# Ignoruj katalogi IDE
+.idea/
+.vscode/
+
+# Ignoruj pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Ignoruj pliki kompilacji Pythona
+__pycache__/
+*.py[cod]
+
+# Ignoruj pliki logów
+*.log
+
+# Ignoruj pliki tymczasowe edytorów
+*.swp
+*~
+
+# Ignoruj pliki generowane przez system operacyjny
+*.bak
+*.tmp

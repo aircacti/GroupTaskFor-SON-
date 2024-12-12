@@ -1,6 +1,8 @@
+from unittest.mock import patch
+
 import pytest
 from main import add_student
-from unittest.mock import patch
+
 
 @pytest.mark.run(order=1)
 def test_add_student():

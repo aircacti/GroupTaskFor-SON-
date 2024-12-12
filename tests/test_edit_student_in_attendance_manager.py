@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.mark.run(order=3)
 def test_edit_student_in_attendance_manager(capfd, attendance_manager):
     sample_date = '2024-11-28'

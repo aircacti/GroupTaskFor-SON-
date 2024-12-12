@@ -1,5 +1,7 @@
-import pytest
 import os
+
+import pytest
+
 
 @pytest.mark.run(order=5)
 def test_generate_csv_in_attendance_manager(capfd, attendance_manager):

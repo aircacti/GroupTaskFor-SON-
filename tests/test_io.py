@@ -1,9 +1,8 @@
-import pytest
 import os
-from import_eksport_files import (
-    import_students_csv, export_students_csv,
-    import_students_txt, export_students_txt
-)
+
+import pytest
+from import_eksport_files import (export_students_csv, export_students_txt,
+                                  import_students_csv, import_students_txt)
 
 
 @pytest.fixture

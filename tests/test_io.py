@@ -4,7 +4,7 @@ import pytest
 from import_eksport_files import (export_students_csv, export_students_txt,
                                   import_students_csv, import_students_txt)
 
-
+#TODO: Refactor whole file
 @pytest.fixture
 def sample_students():
     return [{'name': 'Jan Kowalski', 'present': False}, {'name': 'Adam Nowak', 'present': False}]

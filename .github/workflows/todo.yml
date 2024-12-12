@@ -1,0 +1,22 @@
+name: Create TODO Issues NEW
+
+on:
+  push:
+    branches:
+      - main  # Wykonuj na głównym branchu
+  pull_request:
+    branches:
+      - main  # Wykonuj przy otwieraniu PR do głównego brancha
+
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Pobierz kod z repozytorium
+
+      - name: Run TODO to Issue
+        uses: alstr/todo-to-issue-action@v2  # Poprawna wersja akcji
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}  # Token GitHub do autoryzacji
